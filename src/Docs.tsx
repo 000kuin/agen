@@ -39,7 +39,6 @@ const NAV = [
     group: 'Reference',
     items: [
       { id: 'errors', label: 'Error Codes' },
-      { id: 'tokenomics', label: 'Tokenomics' },
       { id: 'security', label: 'Security Model' },
     ],
   },
