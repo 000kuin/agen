@@ -277,6 +277,7 @@ canvas#bg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-eve
 
 /* ── Contract address ── */
 .ca-section { padding: 64px 44px; border-bottom: 1px solid var(--border); }
+.ca-hero { padding: 40px 44px; background: rgba(0,255,136,0.02); }
 .ca-inner { max-width: 860px; margin: 0 auto; }
 .ca-label {
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;

@@ -207,6 +207,18 @@ export default function App() {
         </div>
       </section>
 
+      {/* Contract address — visible immediately */}
+      <div className="ca-section ca-hero">
+        <div className="ca-inner">
+          <div className="ca-label">Contract Address</div>
+          <div className="ca-row">
+            <span className="ca-addr">{CA}</span>
+            <button className="ca-copy" onClick={copy}>{copied ? '✓ Copied' : 'Copy'}</button>
+          </div>
+          <div className="ca-note">Deployed on Robinhood Chain (Chain ID: 4663). Verify on <a href="https://robinhoodchain.blockscout.com" target="_blank" rel="noreferrer">Blockscout ↗</a></div>
+        </div>
+      </div>
+
       <div className="content">
 
         {/* Architecture panels */}
@@ -328,18 +340,6 @@ export default function App() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-
-        {/* Contract address */}
-        <div className="ca-section">
-          <div className="ca-inner">
-            <div className="ca-label">Contract Address</div>
-            <div className="ca-row">
-              <span className="ca-addr">{CA}</span>
-              <button className="ca-copy" onClick={copy}>{copied ? '✓ Copied' : 'Copy'}</button>
-            </div>
-            <div className="ca-note">Deployed on Robinhood Chain (Chain ID: 4663). Verify on <a href="https://robinhoodchain.blockscout.com" target="_blank" rel="noreferrer">Blockscout ↗</a></div>
           </div>
         </div>
 
