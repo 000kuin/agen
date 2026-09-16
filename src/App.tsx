@@ -153,7 +153,7 @@ const FEED_ITEMS = [
 ]
 
 // ── App ───────────────────────────────────────────────────────────────────────
-const CA = '0xee5377e218e9290d14596f0786ddce4f9d42a816'
+const CA = 'TBA' // ← paste contract address here when ready
 
 export default function App() {
   useReveal()
@@ -173,7 +173,7 @@ export default function App() {
           <li><a href="#token">Token</a></li>
           <li><a href="#/docs" onClick={(e) => { e.preventDefault(); window.location.hash = '/docs' }}>Docs</a></li>
         </ul>
-        <a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer" className="nav-cta">Acquire $AGEN</a>
+        <a href="https://robinhoodchain.blockscout.com" target="_blank" rel="noreferrer" className="nav-cta">Acquire $AGEN</a>
       </nav>
 
       {/* Hero */}
@@ -202,8 +202,8 @@ export default function App() {
             </div>
           </div>
           <div className="hero-btns">
-            <a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer" className="btn-primary">Acquire $AGEN</a>
-            <a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer" className="btn-ghost">Read contract ↗</a>
+            <a href="https://robinhoodchain.blockscout.com" target="_blank" rel="noreferrer" className="btn-primary">Acquire $AGEN</a>
+            <a href="https://robinhoodchain.blockscout.com" target="_blank" rel="noreferrer" className="btn-ghost">Read contract ↗</a>
           </div>
         </div>
         <div className="hero-feed">
@@ -225,7 +225,7 @@ export default function App() {
             <span className="ca-addr">{CA}</span>
             <button className="ca-copy" onClick={copy}>{copied ? '✓ Copied' : 'Copy'}</button>
           </div>
-            <div className="ca-note">Deployed on Robinhood Chain (Chain ID: 4663). Verify on <a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer">Blockscout ↗</a></div>
+            <div className="ca-note">Deployed on Robinhood Chain (Chain ID: 4663). Verify on <a href="https://robinhoodchain.blockscout.com" target="_blank" rel="noreferrer">Blockscout ↗</a></div>
         </div>
       </div>
 
@@ -399,8 +399,8 @@ export default function App() {
           <div className="finale-title">The agent<br/>economy<br/>is live.</div>
           <div className="finale-sub">the only question is whether you're in it</div>
           <div className="hero-btns">
-            <a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer" className="btn-primary">Acquire $AGEN</a>
-            <a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer" className="btn-ghost">View contract ↗</a>
+            <a href="https://robinhoodchain.blockscout.com" target="_blank" rel="noreferrer" className="btn-primary">Acquire $AGEN</a>
+            <a href="https://robinhoodchain.blockscout.com" target="_blank" rel="noreferrer" className="btn-ghost">View contract ↗</a>
           </div>
         </div>
 
@@ -416,7 +416,7 @@ export default function App() {
           <ul className="footer-links">
             <li><a href="https://x.com" target="_blank" rel="noreferrer">Twitter</a></li>
             <li><a href="https://t.me" target="_blank" rel="noreferrer">Telegram</a></li>
-            <li><a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer">Contract ↗</a></li>
+            <li><a href="https://robinhoodchain.blockscout.com" target="_blank" rel="noreferrer">Contract ↗</a></li>
             <li><a href="#/docs" onClick={(e) => { e.preventDefault(); window.location.hash = '/docs' }}>Docs</a></li>
           </ul>
           <span className="footer-copy">© 2026 AGEN Protocol</span>
