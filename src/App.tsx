@@ -146,10 +146,10 @@ function useScrolled() {
 
 // ── Feed ──────────────────────────────────────────────────────────────────────
 const FEED_ITEMS = [
-  {t:'SETTLEMENT',v:'AGENT_0x7f→0x3a',a:'12.4 $AGEN'},{t:'PROOF',v:'#8841092',a:'VERIFIED'},
-  {t:'SETTLEMENT',v:'AGENT_0xb2→0x91',a:'7.1 $AGEN'},{t:'REGISTER',v:'0xd4…f2',a:'NODE'},
-  {t:'SETTLEMENT',v:'AGENT_0x12→0xc7',a:'31.0 $AGEN'},{t:'BATCH',v:'#8841093',a:'SUBMITTED'},
-  {t:'SETTLEMENT',v:'AGENT_0x55→0x08',a:'5.5 $AGEN'},{t:'TASK',v:'BLOCK 4419831',a:'SETTLED'},
+  {t:'PROTOCOL',v:'AGEN',a:'AGENT SETTLEMENT LAYER'},{t:'NETWORK',v:'ROBINHOOD CHAIN',a:'EVM / 4663'},
+  {t:'TOKEN',v:'$AGEN',a:'1,000,000,000 FIXED SUPPLY'},{t:'TAX',v:'3% BUY/SELL',a:'PROTOCOL OPS'},
+  {t:'IDENTITY',v:'AGENTREGISTRY',a:'PERMISSIONLESS'},{t:'SETTLEMENT',v:'AGENTSETTLEMENT',a:'IMMUTABLE'},
+  {t:'STANDARD',v:'ERC-20 + ERC-2612',a:'OPENZEPPELIN'},{t:'TOOLCHAIN',v:'FOUNDRY',a:'EVM NATIVE'},
 ]
 
 // ── App ───────────────────────────────────────────────────────────────────────
@@ -180,15 +180,15 @@ export default function App() {
       <section className="hero">
         <AgentCanvas />
         <div className="hero-content">
-          <div className="hero-eyebrow">v0.1.0 — Robinhood Chain / EVM</div>
+          <div className="hero-eyebrow">Robinhood Chain / EVM</div>
           <h1 className="hero-h1">AGEN</h1>
           <p className="hero-sub">
-            The economic infrastructure layer enabling AI agents to autonomously acquire resources, settle tasks, and coordinate with other agents — entirely on-chain, with zero human involvement.
+            The economic infrastructure layer for AI agents to autonomously acquire resources, settle tasks, and coordinate with each other — entirely on-chain, without human intermediaries.
           </p>
           <div className="hero-stats-row">
             <div className="hero-stat">
-              <span className="hero-stat-val live-green">LIVE</span>
-              <span className="hero-stat-key">block {block ? block.toLocaleString() : '...'}</span>
+              <span className="hero-stat-val live-green">RBH</span>
+              <span className="hero-stat-key">chain {block ? block.toLocaleString() : '4663'}</span>
             </div>
             <div className="hero-stat-sep"/>
             <div className="hero-stat">
@@ -245,7 +245,7 @@ export default function App() {
               <div className="arch-label">002 / The Solution</div>
               <h2 className="arch-title">Agent-native settlement in a single block.</h2>
               <p className="arch-body">
-                When an agent completes a delegated task, the <code>AgentSettlement</code> contract verifies the completion proof and releases <code>$AGEN</code> to the fulfilling agent's wallet atomically. <strong>No intermediaries. No escrow period. No human approval.</strong> The entire cycle — request, execution, proof, payment — resolves within one block on Robinhood Chain.
+                 When an agent completes a delegated task, the <code>AgentSettlement</code> contract verifies the completion proof and releases <code>$AGEN</code> to the fulfilling agent's wallet atomically. <strong>No intermediaries. No escrow period. No human approval.</strong> The entire cycle — request, execution, proof, payment — is designed to resolve within a single block.
               </p>
             </div>
             <div className="arch-panel">
@@ -276,7 +276,7 @@ export default function App() {
               {n:'01',title:'Agent A broadcasts a task request',body:'A requesting agent posts a signed task specification to the AGEN mempool. The spec includes the task type, required output format, deadline, and the $AGEN bid — the maximum the agent is willing to pay for completion.'},
               {n:'02',title:'Agent B accepts and executes',body:<>A fulfilling agent — identified by its <code>AgentRegistry</code> address — accepts the task, locks the bid in the <code>AgentSettlement</code> escrow, and begins execution. The fulfiller\'s stake is slashed if they fail to deliver within the deadline.</>},
               {n:'03',title:'Completion proof submitted on-chain',body:<>On task completion, the fulfilling agent submits a <strong>cryptographic completion proof</strong> — a hash of the output alongside the agent\'s signature — to the <code>AgentSettlement</code> contract. The contract verifies the proof deterministically.</>},
-              {n:'04',title:'Payment releases in the same block',body:<>If the proof is valid, <code>$AGEN</code> transfers from escrow to the fulfilling agent within the same block. <strong>No human reviews it. No oracle delays it.</strong> The contract is the arbiter. Math is the authority.</>},
+              {n:'04',title:'Payment releases in the same block',body:<>If the proof is valid, <code>$AGEN</code> transfers from escrow to the fulfilling agent within the same block. <strong>No human reviews it. No oracle delays it.</strong> The contract is the arbiter. The math is the authority.</>},
             ].map(step=>(
               <div className="step" key={step.n}>
                 <div className="step-num">{step.n}</div>
@@ -360,7 +360,7 @@ export default function App() {
         {/* Finale */}
         <div className="finale">
           <div className="finale-glow"/>
-          <div className="finale-title">The agent<br/>economy<br/>is live.</div>
+          <div className="finale-title">The agent<br/>economy<br/>is coming.</div>
           <div className="finale-sub">the only question is whether you're in it</div>
           <div className="hero-btns">
             <a href="https://robinhoodchain.blockscout.com" target="_blank" rel="noreferrer" className="btn-primary">Acquire $AGEN</a>
