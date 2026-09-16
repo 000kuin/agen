@@ -317,42 +317,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* Allocation bar */}
-        <div className="alloc-section">
-          <div className="alloc-inner">
-            <div className="how-header">
-              <div className="section-label">Distribution</div>
-              <h2 className="section-title">Where the supply went</h2>
-            </div>
-            <div className="alloc-bar-wrap">
-              <div className="alloc-bar">
-                <div className="alloc-seg community" style={{width:'94%'}} />
-                <div className="alloc-seg reserve" style={{width:'6%'}} />
-              </div>
-              <div className="alloc-legend">
-                <div className="alloc-item">
-                  <span className="alloc-dot community"/>
-                  <span className="alloc-name">Community &amp; public</span>
-                  <span className="alloc-pct">94%</span>
-                  <span className="alloc-amt">940,000,000 $AGEN</span>
-                </div>
-                <div className="alloc-item">
-                  <span className="alloc-dot reserve"/>
-                  <span className="alloc-name">Protocol ops &amp; liquidity</span>
-                  <span className="alloc-pct">6%</span>
-                  <span className="alloc-amt">60,000,000 $AGEN</span>
-                </div>
-                <div className="alloc-item">
-                  <span className="alloc-dot none"/>
-                  <span className="alloc-name">Team / founders</span>
-                  <span className="alloc-pct g">0%</span>
-                  <span className="alloc-amt">0 $AGEN</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Quote */}
         <div className="quote-section">
           <div className="quote-inner">
