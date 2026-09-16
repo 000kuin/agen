@@ -62,21 +62,25 @@ function AgentCanvas() {
       while(to===from)to=Math.floor(Math.random()*nodes.length)
       const dx=nodes[from].x-nodes[to].x,dy=nodes[from].y-nodes[to].y
       if(Math.sqrt(dx*dx+dy*dy)>360)return
-      packets.push({from,to,progress:0,speed:0.005+Math.random()*0.005})
+      packets.push({from,to,progress:0,speed:0.004+Math.random()*0.004})
       nodes[from].heat=1
     }
     const draw=()=>{
       t++
       if(t%22===0)spawn()
       ctx.clearRect(0,0,W(),H())
-      ctx.fillStyle='#020205'; ctx.fillRect(0,0,W(),H())
+      ctx.fillStyle='#0a0800'; ctx.fillRect(0,0,W(),H())
+      // warm amber atmospheric glow
+      const atm=ctx.createRadialGradient(W()*0.5,H()*0.6,0,W()*0.5,H()*0.6,H()*0.9)
+      atm.addColorStop(0,'rgba(232,140,20,0.04)');atm.addColorStop(1,'transparent')
+      ctx.fillStyle=atm;ctx.fillRect(0,0,W(),H())
       for(let i=0;i<nodes.length;i++)for(let j=i+1;j<nodes.length;j++){
         const dx=nodes[i].x-nodes[j].x,dy=nodes[i].y-nodes[j].y
         const d=Math.sqrt(dx*dx+dy*dy),max=nodes[i].type==='hub'||nodes[j].type==='hub'?280:170
         if(d<max){
           const a=(1-d/max)*0.07+(nodes[i].heat+nodes[j].heat)*0.08
           ctx.beginPath();ctx.moveTo(nodes[i].x,nodes[i].y);ctx.lineTo(nodes[j].x,nodes[j].y)
-          ctx.strokeStyle=`rgba(0,255,136,${a})`;ctx.lineWidth=0.5;ctx.stroke()
+          ctx.strokeStyle=`rgba(232,160,32,${a})`;ctx.lineWidth=0.5;ctx.stroke()
         }
       }
       for(let i=packets.length-1;i>=0;i--){
@@ -86,9 +90,9 @@ function AgentCanvas() {
         const nx=nodes[p.from].x+(nodes[p.to].x-nodes[p.from].x)*e
         const ny=nodes[p.from].y+(nodes[p.to].y-nodes[p.from].y)*e
         const g=ctx.createRadialGradient(nx,ny,0,nx,ny,10)
-        g.addColorStop(0,'rgba(0,255,136,0.35)');g.addColorStop(1,'transparent')
+        g.addColorStop(0,'rgba(232,160,32,0.4)');g.addColorStop(1,'transparent')
         ctx.fillStyle=g;ctx.beginPath();ctx.arc(nx,ny,10,0,Math.PI*2);ctx.fill()
-        ctx.beginPath();ctx.arc(nx,ny,2.5,0,Math.PI*2);ctx.fillStyle='#00ff88';ctx.fill()
+        ctx.beginPath();ctx.arc(nx,ny,2.5,0,Math.PI*2);ctx.fillStyle='#e8a020';ctx.fill()
       }
       for(const n of nodes){
         n.x+=n.vx;n.y+=n.vy
@@ -98,16 +102,16 @@ function AgentCanvas() {
         const b=0.3+n.heat*0.7+Math.sin(n.pulse)*0.1
         if(n.type==='hub'){
           const h=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*12)
-          h.addColorStop(0,`rgba(0,255,136,${0.1+n.heat*0.08})`);h.addColorStop(1,'transparent')
+          h.addColorStop(0,`rgba(232,140,20,${0.12+n.heat*0.08})`);h.addColorStop(1,'transparent')
           ctx.fillStyle=h;ctx.beginPath();ctx.arc(n.x,n.y,n.r*12,0,Math.PI*2);ctx.fill()
           ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2)
-          ctx.fillStyle=`rgba(0,255,136,${b})`;ctx.fill()
+          ctx.fillStyle=`rgba(232,160,32,${b})`;ctx.fill()
         } else if(n.type==='agent'){
           ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2)
-          ctx.fillStyle=`rgba(0,255,136,${b*0.65})`;ctx.fill()
+          ctx.fillStyle=`rgba(232,160,32,${b*0.65})`;ctx.fill()
         } else {
           ctx.beginPath();ctx.arc(n.x,n.y,n.r,0,Math.PI*2)
-          ctx.fillStyle=`rgba(255,255,255,${b*0.18})`;ctx.fill()
+          ctx.fillStyle=`rgba(255,220,120,${b*0.15})`;ctx.fill()
         }
       }
       raf=requestAnimationFrame(draw)

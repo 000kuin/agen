@@ -1,10 +1,10 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #020205;
-  --green: #00ff88;
-  --green-dim: rgba(0,255,136,0.06);
-  --green-glow: rgba(0,255,136,0.2);
+  --bg: #0a0800;
+  --green: #e8a020;
+  --green-dim: rgba(232,160,32,0.06);
+  --green-glow: rgba(232,160,32,0.2);
   --border: rgba(255,255,255,0.06);
   --mono: 'SF Mono','Fira Code','Cascadia Code',monospace;
   --font: 'Inter', system-ui, sans-serif;
