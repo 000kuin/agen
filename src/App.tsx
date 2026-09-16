@@ -414,8 +414,6 @@ export default function App() {
             </div>
           </div>
           <ul className="footer-links">
-            <li><a href="https://x.com" target="_blank" rel="noreferrer">Twitter</a></li>
-            <li><a href="https://t.me" target="_blank" rel="noreferrer">Telegram</a></li>
             <li><a href="https://robinhoodchain.blockscout.com" target="_blank" rel="noreferrer">Contract ↗</a></li>
             <li><a href="#/docs" onClick={(e) => { e.preventDefault(); window.location.hash = '/docs' }}>Docs</a></li>
           </ul>
