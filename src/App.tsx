@@ -407,7 +407,7 @@ export default function App() {
             <li><a href="#">Twitter</a></li>
             <li><a href="#">Telegram</a></li>
             <li><a href="#">Contract ↗</a></li>
-            <li><a href="#">Docs</a></li>
+          <li><a href="/docs">Docs</a></li>
           </ul>
           <span className="footer-copy">© 2026 AGEN Protocol</span>
         </footer>
