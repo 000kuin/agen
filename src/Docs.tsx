@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Link } from 'wouter'
 import './Docs.css'
 
 const NAV = [
@@ -586,13 +585,13 @@ export default function Docs() {
   return (
     <div className="docs-page">
       <aside className="docs-sidebar">
-        <Link href="/" className="sidebar-logo">
+        <a href="#/" className="sidebar-logo">
           <span className="sidebar-dot" />
           <div>
             <div className="sidebar-logo-name">AGEN</div>
             <div className="sidebar-logo-tag">Documentation</div>
           </div>
-        </Link>
+        </a>
         <nav className="sidebar-nav">
           {NAV.map(group => (
             <div className="sidebar-group" key={group.group}>
