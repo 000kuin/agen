@@ -1,16 +1,26 @@
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
 
-// ── Live counters ─────────────────────────────────────────────────────────────
-function useTickingNumber(start: number, perSecond: number) {
-  const [val, setVal] = useState(start)
+// ── Live block number from RPC ─────────────────────────────────────────────────
+function useLiveBlock() {
+  const [block, setBlock] = useState<number | null>(null)
   useEffect(() => {
-    const id = setInterval(() => {
-      setVal(v => v + Math.floor(Math.random() * perSecond * 2))
-    }, 1000)
+    const fetch = async () => {
+      try {
+        const res = await window.fetch('https://rpc.mainnet.chain.robinhood.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ jsonrpc: '2.0', method: 'eth_blockNumber', params: [], id: 1 }),
+        })
+        const data = await res.json()
+        setBlock(parseInt(data.result, 16))
+      } catch {}
+    }
+    fetch()
+    const id = setInterval(fetch, 6000)
     return () => clearInterval(id)
-  }, [perSecond])
-  return val
+  }, [])
+  return block
 }
 
 function useCopyAddress(addr: string) {
@@ -143,13 +153,13 @@ const FEED_ITEMS = [
 ]
 
 // ── App ───────────────────────────────────────────────────────────────────────
-const CA = '0x0000000000000000000000000000000000000000' // replace with real CA
+const CA = '0xee5377e218e9290d14596f0786ddce4f9d42a816'
 
 export default function App() {
   useReveal()
   const scrolled = useScrolled()
   const feed = [...FEED_ITEMS,...FEED_ITEMS]
-  const block = useTickingNumber(4_419_831, 1)
+  const block = useLiveBlock()
   const { copied, copy } = useCopyAddress(CA)
 
   return (
@@ -163,7 +173,7 @@ export default function App() {
           <li><a href="#token">Token</a></li>
           <li><a href="#/docs" onClick={(e) => { e.preventDefault(); window.location.hash = '/docs' }}>Docs</a></li>
         </ul>
-        <a href="#" className="nav-cta">Acquire $AGEN</a>
+        <a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer" className="nav-cta">Acquire $AGEN</a>
       </nav>
 
       {/* Hero */}
@@ -178,7 +188,7 @@ export default function App() {
           <div className="hero-stats-row">
             <div className="hero-stat">
               <span className="hero-stat-val live-green">LIVE</span>
-              <span className="hero-stat-key">block {block.toLocaleString()}</span>
+              <span className="hero-stat-key">block {block ? block.toLocaleString() : '...'}</span>
             </div>
             <div className="hero-stat-sep"/>
             <div className="hero-stat">
@@ -192,8 +202,8 @@ export default function App() {
             </div>
           </div>
           <div className="hero-btns">
-            <a href="#" className="btn-primary">Acquire $AGEN</a>
-            <a href="#" className="btn-ghost">Read contract ↗</a>
+            <a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer" className="btn-primary">Acquire $AGEN</a>
+            <a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer" className="btn-ghost">Read contract ↗</a>
           </div>
         </div>
         <div className="hero-feed">
@@ -215,7 +225,7 @@ export default function App() {
             <span className="ca-addr">{CA}</span>
             <button className="ca-copy" onClick={copy}>{copied ? '✓ Copied' : 'Copy'}</button>
           </div>
-          <div className="ca-note">Deployed on Robinhood Chain (Chain ID: 4663). Verify on <a href="https://robinhoodchain.blockscout.com" target="_blank" rel="noreferrer">Blockscout ↗</a></div>
+            <div className="ca-note">Deployed on Robinhood Chain (Chain ID: 4663). Verify on <a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer">Blockscout ↗</a></div>
         </div>
       </div>
 
@@ -389,8 +399,8 @@ export default function App() {
           <div className="finale-title">The agent<br/>economy<br/>is live.</div>
           <div className="finale-sub">the only question is whether you're in it</div>
           <div className="hero-btns">
-            <a href="#" className="btn-primary">Acquire $AGEN</a>
-            <a href="#" className="btn-ghost">View contract</a>
+            <a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer" className="btn-primary">Acquire $AGEN</a>
+            <a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer" className="btn-ghost">View contract ↗</a>
           </div>
         </div>
 
@@ -404,10 +414,10 @@ export default function App() {
             </div>
           </div>
           <ul className="footer-links">
-            <li><a href="#">Twitter</a></li>
-            <li><a href="#">Telegram</a></li>
-            <li><a href="#">Contract ↗</a></li>
-          <li><a href="#/docs" onClick={(e) => { e.preventDefault(); window.location.hash = '/docs' }}>Docs</a></li>
+            <li><a href="https://x.com" target="_blank" rel="noreferrer">Twitter</a></li>
+            <li><a href="https://t.me" target="_blank" rel="noreferrer">Telegram</a></li>
+            <li><a href="https://robinhoodchain.blockscout.com/address/0xee5377e218e9290d14596f0786ddce4f9d42a816" target="_blank" rel="noreferrer">Contract ↗</a></li>
+            <li><a href="#/docs" onClick={(e) => { e.preventDefault(); window.location.hash = '/docs' }}>Docs</a></li>
           </ul>
           <span className="footer-copy">© 2026 AGEN Protocol</span>
         </footer>
