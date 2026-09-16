@@ -153,7 +153,7 @@ const FEED_ITEMS = [
 ]
 
 // ── App ───────────────────────────────────────────────────────────────────────
-const CA = '0x5d84b017017c7c977a6f70268e106e594f494df5'
+const CA = ''
 
 export default function App() {
   useReveal()
@@ -218,7 +218,7 @@ export default function App() {
       </section>
 
       {/* Contract address — visible immediately */}
-      <div className="ca-section ca-hero">
+      {CA && <div className="ca-section ca-hero" style={{display: CA ? undefined : 'none'}}>
         <div className="ca-inner">
           <div className="ca-label">Contract Address</div>
           <div className="ca-row">
@@ -227,7 +227,7 @@ export default function App() {
           </div>
             <div className="ca-note">Deployed on Robinhood Chain (Chain ID: 4663). Verify on <a href="https://robinhoodchain.blockscout.com/address/0x5d84b017017c7c977a6f70268e106e594f494df5" target="_blank" rel="noreferrer">Blockscout ↗</a></div>
         </div>
-      </div>
+      </div>}
 
       <div className="content">
 
