@@ -161,7 +161,7 @@ export default function App() {
           <li><a href="#architecture">Protocol</a></li>
           <li><a href="#how-it-works">How It Works</a></li>
           <li><a href="#token">Token</a></li>
-          <li><a href="#">Docs</a></li>
+          <li><a href="#/docs" onClick={(e) => { e.preventDefault(); window.location.hash = '/docs' }}>Docs</a></li>
         </ul>
         <a href="#" className="nav-cta">Acquire $AGEN</a>
       </nav>
