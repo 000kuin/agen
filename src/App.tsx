@@ -157,7 +157,7 @@ const FEED_ITEMS = [
 ]
 
 // ── App ───────────────────────────────────────────────────────────────────────
-const CA = '0x8bd90e264eea587e80b4798474aec4a3e28a7794'
+const CA = ''
 
 export default function App() {
   useReveal()
